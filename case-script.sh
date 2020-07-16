@@ -2,7 +2,7 @@
 
 echo -e "
 1 - Adicionar um usuário no sistema
-2 - Delerar um usuário do sistema
+2 - Deletar um usuário do sistema
 3 - Verificar se um usuário existe no sistema
 4 - Sair"
 
@@ -10,7 +10,7 @@ echo
 echo "Escolha uma das opções: "
 read OPT
 
-case $OPT
+case $OPT in # <- não esquece desse menino
 1)
 	clear
 	echo -n "Digite o nome do usuário a ser adicionado: "
@@ -18,7 +18,7 @@ case $OPT
 	echo -n "Digite sua senha: "
 	read -s SENHA
 	echo "Adcionando novo usuário ($USUARIO) no sistema: "
-	adduser -m --home /srv/home/$USUARIO $USUARIO]
+	adduser -m --home /srv/home/$USUARIO $USUARIO
 	echo $USUARIO:$SENHA | chpasswd
         if [ $? -eq 0 ]; then
         	echo "O o usuário $USUARIO foi adicionado com sucesso!"
